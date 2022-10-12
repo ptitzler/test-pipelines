@@ -1,0 +1,282 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "941f0ffc-cf8f-495e-bdf9-c8d3069ffc2f",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [
+                {
+                  "path": "/mnt/vol1",
+                  "pvc_name": "ptitzler-test-pvc",
+                  "sub_path": "test-dir-1/",
+                  "read_only": false
+                }
+              ],
+              "filename": "sub-path-notebook.ipynb",
+              "runtime_image": "tensorflow/tensorflow:2.8.0"
+            },
+            "label": "modify volume",
+            "ui_data": {
+              "label": "modify volume",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 311,
+              "y_pos": 163,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "a4d2f2fd-c23b-40d9-aac4-742b16134acc",
+                  "node_id_ref": "601ea602-436c-4fc3-9dae-b11d96b17202",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "601ea602-436c-4fc3-9dae-b11d96b17202",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [
+                {
+                  "path": "/mnt/vol1",
+                  "pvc_name": "ptitzler-test-pvc",
+                  "read_only": false
+                }
+              ],
+              "filename": "set_up.ipynb",
+              "runtime_image": "tensorflow/tensorflow:2.8.0"
+            },
+            "label": "prep mounted volume",
+            "ui_data": {
+              "label": "prep mounted volume",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 51,
+              "y_pos": 111,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "256ea8a6-6f03-47d4-911f-afc73eb4910c",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [
+                {
+                  "path": "/mnt/vol1",
+                  "pvc_name": "ptitzler-test-pvc",
+                  "read_only": true
+                }
+              ],
+              "filename": "list.ipynb",
+              "runtime_image": "tensorflow/tensorflow:2.8.0"
+            },
+            "label": "list volume content",
+            "ui_data": {
+              "label": "list volume content",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 543,
+              "y_pos": 233,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "c7acec83-4807-44d7-9011-67f5dc025fdb",
+                  "node_id_ref": "941f0ffc-cf8f-495e-bdf9-c8d3069ffc2f",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": [
+            {
+              "id": "63559be4-4640-46cf-9063-85179a677e39",
+              "x_pos": 18,
+              "y_pos": 35,
+              "width": 175,
+              "height": 44,
+              "content": "Create the test filesystem layout ",
+              "associated_id_refs": [
+                {
+                  "node_ref": "601ea602-436c-4fc3-9dae-b11d96b17202"
+                }
+              ]
+            },
+            {
+              "id": "d4d0f749-af10-4f38-99df-3205fa9aa844",
+              "x_pos": 257,
+              "y_pos": 58,
+              "width": 175,
+              "height": 44,
+              "content": "Modify mounted sub path content",
+              "associated_id_refs": [
+                {
+                  "node_ref": "941f0ffc-cf8f-495e-bdf9-c8d3069ffc2f"
+                }
+              ]
+            },
+            {
+              "id": "c0559709-4fbd-4a07-84ed-e6fa4bde7d8e",
+              "x_pos": 497.9999694824219,
+              "y_pos": 91,
+              "width": 175,
+              "height": 42,
+              "content": "List filesystem",
+              "associated_id_refs": [
+                {
+                  "node_ref": "256ea8a6-6f03-47d4-911f-afc73eb4910c"
+                }
+              ]
+            }
+          ]
+        },
+        "version": 8,
+        "properties": {
+          "pipeline_defaults": {
+            "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
+            "kubernetes_pod_annotations": [],
+            "mounted_volumes": [],
+            "env_vars": [
+              {
+                "env_var": "VOL_MOUNT_DIR",
+                "value": "/mnt/vol1"
+              }
+            ],
+            "kubernetes_secrets": [],
+            "runtime_image": "tensorflow/tensorflow:2.8.0"
+          },
+          "name": "sub-path-test",
+          "runtime": "Generic",
+          "description": "Test sub path attribute of the data volume property"
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}
