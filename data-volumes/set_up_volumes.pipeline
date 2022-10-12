@@ -1,0 +1,197 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "4d194345-5cc9-4c80-9ed9-520ccf9e8d22",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [
+                {
+                  "env_var": "VOL_MOUNT_DIR",
+                  "value": "/mnt/vol1"
+                }
+              ],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "set_up.ipynb",
+              "runtime_image": "tensorflow/tensorflow:2.8.0"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "set_up.ipynb",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 180,
+              "y_pos": 135,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "28392e16-3201-4083-90c0-172d44c2ccb7",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [
+                {
+                  "env_var": "VOL_MOUNT_DIR",
+                  "value": "/mnt/vol1"
+                }
+              ],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "list.ipynb"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "list.ipynb",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 446.0000305175781,
+              "y_pos": 134,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "1846379e-bea0-4ea7-a987-bdd30c051ada",
+                  "node_id_ref": "4d194345-5cc9-4c80-9ed9-520ccf9e8d22",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": [
+            {
+              "id": "462fd81f-8962-4a82-b5c5-62f20657faa6",
+              "x_pos": 30,
+              "y_pos": 50,
+              "width": 175,
+              "height": 44,
+              "content": "Set up filesystem directory structure in test PVC",
+              "associated_id_refs": [
+                {
+                  "node_ref": "4d194345-5cc9-4c80-9ed9-520ccf9e8d22"
+                }
+              ]
+            },
+            {
+              "id": "6a17a8c7-7c01-4f67-819a-709306779a9b",
+              "x_pos": 345,
+              "y_pos": 50,
+              "width": 175,
+              "height": 42,
+              "content": "List filesystem content",
+              "associated_id_refs": [
+                {
+                  "node_ref": "28392e16-3201-4083-90c0-172d44c2ccb7"
+                }
+              ]
+            }
+          ]
+        },
+        "version": 8,
+        "properties": {
+          "pipeline_defaults": {
+            "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
+            "kubernetes_pod_annotations": [],
+            "mounted_volumes": [
+              {
+                "path": "/mnt/vol1",
+                "pvc_name": "ptitzler-test-pvc",
+                "read_only": false
+              }
+            ],
+            "env_vars": [],
+            "kubernetes_secrets": [],
+            "runtime_image": "tensorflow/tensorflow:2.8.0"
+          },
+          "name": "set_up_volumes",
+          "runtime": "Generic",
+          "description": "Set up filesystem in test PVC"
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}
